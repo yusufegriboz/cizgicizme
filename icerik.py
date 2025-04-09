@@ -12,21 +12,19 @@ scatter(x,y, s=100 ,marker='o', c=color)
 for i in range(len(x)):
     plt.plot(x[i:i+2], y[i:i+2], 'ro-')
 
+    if i == 0:
+        plt.plot([x[0], x[3]], [y[0], y[3]], 'b-', lw=2)
+
 left, right = ax.get_xlim()
 low, high = ax.get_ylim()
 
-# 1. bölgedeki (2, 3) ve 4. bölgedeki (3, -2) noktayı birleştiren çizgiyi ekliyoruz
-plt.plot([x[0], x[3]], [y[0], y[3]], 'b-', lw=2)  # 1. ve 4. bölgeyi birleştiren çizgi
-
-# Yatay ve dikey okları çiz
 arrow(left, 0, right - left, 0, length_includes_head=True, head_width=0.15)
 arrow(0, low, 0, high - low, length_includes_head=True, head_width=0.15)
 
-# Eksen çizgisi
 xpoints = ypoints = ax.get_xlim()
 ax.plot(xpoints, ypoints, linestyle='-', color='k', lw=3, scalex=False, scaley=False)
 
-# Grid
+# Grid daha net görünsün diye
 grid(True)
 
 show()
